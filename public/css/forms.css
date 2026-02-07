@@ -1,4 +1,4 @@
-.new-form {
+form {
   background: #ffffff;
   width: 100%;
   max-width: 550px;
@@ -50,7 +50,7 @@ textarea.form-control {
   min-height: 100px;
 }
 
-.add-btn {
+.form-btn {
   width: 100%;
   max-width: 30rem;
   padding: 12px;

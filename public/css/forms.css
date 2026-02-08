@@ -67,10 +67,10 @@ textarea.form-control {
     transform 0.1s;
 }
 
-.add-btn:hover {
+.form-btn:hover {
   background: #fe424d;
 }
 
-.add-btn:active {
+.form-btn:active {
   transform: scale(0.98);
 }

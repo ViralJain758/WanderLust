@@ -1,0 +1,130 @@
+.listing-container {
+  width: 100%;
+  max-width: 55rem;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+.listing-card {
+  border: 1px solid #ddd;
+  border-radius: 1rem;
+  padding: 1rem;
+  background: #fff;
+}
+
+.listing-title {
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  font-weight: 700;
+  text-align: center;
+  letter-spacing: 0.5px;
+}
+
+.listing-image {
+  width: 100%;
+  height: auto;
+  border-radius: 1rem;
+  max-height: 30rem;
+  margin: 15px 0;
+}
+
+.listing-info {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.2rem;
+}
+
+.listing-info li {
+  background: rgba(0, 0, 0, 0.04);
+  border-radius: 12px;
+  padding: 1rem 1.2rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.listing-description {
+  grid-column: 1 / -1;
+  font-size: 1rem;
+  opacity: 0.9;
+}
+
+.listing-price {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #22c55e;
+}
+
+.listing-location,
+.listing-country {
+  text-transform: capitalize;
+  opacity: 0.85;
+}
+
+.listing-actions {
+  margin-top: 20px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+}
+
+.btn {
+  padding: 8px 16px;
+  border-radius: 6px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  min-height: 40px;
+  max-height: 50px;
+  font-size: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-edit {
+  background: #000000;
+  color: #ffffff;
+}
+
+.btn-edit:hover {
+  background: #333333;
+}
+
+.delete-form {
+  background: transparent;
+  width: auto;
+  max-width: none;
+  padding: 0;
+  border-radius: 0;
+  box-shadow: none;
+  margin: 0;
+}
+
+.delete-btn {
+  background: #dc3545;
+  color: #fff;
+}
+
+.delete-btn:hover {
+  background: #c82333;
+}
+
+@media (max-width: 700px) {
+  .listing-card {
+    padding: 1.5rem;
+  }
+
+  .listing-info {
+    grid-template-columns: 1fr;
+  }
+
+  .listing-actions {
+    flex-direction: column;
+  }
+
+  .btn {
+    width: 100%;
+  }
+}

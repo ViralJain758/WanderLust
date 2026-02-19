@@ -88,6 +88,14 @@
                 </p>
               </div>
               <p class="review-comment"><%= review.comment %></p>
+              <br />
+              <form
+                action="/listings/<%= listing._id %>/review/<%= review._id %>?_method=DELETE"
+                method="POST"
+                class="delete-form"
+              >
+                <button class="btn delete-btn">Delete this Review</button>
+              </form>
             </article>
           <% } %>
         </section>

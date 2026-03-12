@@ -4,6 +4,8 @@ const ejsMate = require("ejs-mate");
 const mongoose = require("mongoose");
 const ExpressError = require("./utils/ExpressError.js");
 const methodOverride = require("method-override");
+const session = require("express-session");
+const flash = require("connect-flash");
 
 const listings = require("./routes/listing.js");
 const reviews = require("./routes/reviews.js");
@@ -29,14 +31,33 @@ app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
 app.use(express.static(path.join(__dirname, "/public")));
 
-app.use("/listings", listings);
-app.use("/listings/:id/review", reviews);
-
 app.engine("ejs", ejsMate);
+
+const sessionOptions = {
+  secret: "mySecretCode",
+  resave: false,
+  saveUninitialized: true,
+  cookjie: {
+    httpOnly: true,
+    expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
+    maxAge: 1000 * 60 * 60 * 24 * 7,
+  },
+};
+
+app.use(session(sessionOptions));
+app.use(flash());
 
 app.get("/", (req, res) => {
   res.send("Hello World");
 });
+
+app.use((req, res, next) => {
+  res.locals.success = req.flash("Success");
+  next();
+});
+
+app.use("/listings", listings);
+app.use("/listings/:id/review", reviews);
 
 app.use((req, res, next) => {
   next(new ExpressError(404, "Page not Found!"));

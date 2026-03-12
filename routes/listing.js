@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const mongoose = require("mongoose");
 
 const Listing = require("../models/listing.js");
 const wrapAsync = require("../utils/wrapAsync.js");
@@ -14,6 +15,14 @@ const validateListing = (req, res, next) => {
   } else {
     next();
   }
+};
+
+const validateObjectId = (req, res, next) => {
+  if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
+    req.flash("error", "Invalid listing ID!");
+    return res.redirect("/listings");
+  }
+  next();
 };
 
 // Index Route
@@ -33,6 +42,7 @@ router.get("/new", (req, res) => {
 //Show Route
 router.get(
   "/:id",
+  validateObjectId,
   wrapAsync(async (req, res) => {
     let { id } = req.params;
     const listing = await Listing.findById(id).populate("reviews");
@@ -54,6 +64,7 @@ router.post(
 
 router.get(
   "/:id/edit",
+  validateObjectId,
   wrapAsync(async (req, res) => {
     let { id } = req.params;
     const listing = await Listing.findById(id);
@@ -64,10 +75,17 @@ router.get(
 //Update Route
 router.put(
   "/:id",
+  validateObjectId,
   validateListing,
   wrapAsync(async (req, res) => {
     let { id } = req.params;
-    await Listing.findByIdAndUpdate(id, { ...req.body.listing });
+    const listing = await Listing.findByIdAndUpdate(id, {
+      ...req.body.listing,
+    });
+    if (!listing) {
+      req.flash("error", "Listing does not exist!");
+      return res.redirect("/listings");
+    }
     req.flash("Update", "Listing Updated!");
     res.redirect(`/listings/${id}`);
   }),
@@ -76,6 +94,7 @@ router.put(
 //Delete Route
 router.delete(
   "/:id",
+  validateObjectId,
   wrapAsync(async (req, res) => {
     let { id } = req.params;
     await Listing.findByIdAndDelete(id, { ...req.body.listing });

@@ -30,7 +30,7 @@ router.post(
 
     await newReview.save();
     await listing.save();
-
+    req.flash("Review", "Review Added!");
     res.redirect(`/listings/${id}`);
   }),
 );

@@ -39,6 +39,17 @@
   border: 2px solid rgb(239, 105, 105);
 }
 
+.flashMessage--review {
+  background: rgb(255, 236, 179);
+  border: 2px solid rgb(255, 193, 7);
+}
+
+.flashMessage--error {
+  background: rgb(255, 205, 210);
+  border: 2px solid rgb(211, 47, 47);
+  color: rgb(183, 28, 28);
+}
+
 .flashMessage.fadeOut {
   opacity: 0;
   transform: translateY(-6px);

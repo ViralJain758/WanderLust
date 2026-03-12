@@ -24,3 +24,21 @@
     </div>
     </div>
 <% } %>
+
+<% if(review && review.length){ %>
+    <div class="flashMessages">
+    <div class="flashMessage flashMessage--review flashAutoDismiss" role="alert" aria-live="polite">
+        <span><%= review %></span>
+        <button type="button" class="flashClose" aria-label="Dismiss alert" onclick="this.closest('.flashMessage').remove()">&times;</button>
+    </div>
+    </div>
+<% } %>
+
+<% if(error && error.length){ %>
+    <div class="flashMessages">
+    <div class="flashMessage flashMessage--error flashAutoDismiss" role="alert" aria-live="polite">
+        <span><%= error %></span>
+        <button type="button" class="flashClose" aria-label="Dismiss alert" onclick="this.closest('.flashMessage').remove()">&times;</button>
+    </div>
+    </div>
+<% } %>

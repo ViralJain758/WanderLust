@@ -53,6 +53,8 @@ app.get("/", (req, res) => {
 
 app.use((req, res, next) => {
   res.locals.success = req.flash("Success");
+  res.locals.update = req.flash("Update");
+  res.locals.deleteMsg = req.flash("Delete");
   next();
 });
 

@@ -21,12 +21,11 @@
     </div>
     <br />
     <div class="form-field">
-      <label for="image.url" class="form-label">Image URL</label>
+      <label for="image" class="form-label">Image URL</label>
       <input
-        name="listing[image.url]"
-        value="<%= listing.image.url %>"
+        name="listing[image][url]"
+        value="<%= listing.image && listing.image.url ? listing.image.url : '' %>"
         class="form-control"
-        required
       />
     </div>
     <br />

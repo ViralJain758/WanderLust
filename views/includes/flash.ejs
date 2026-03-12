@@ -1,0 +1,26 @@
+<% if(success && success.length){ %>
+    <div class="flashMessages">
+    <div class="flashMessage flashMessage--success flashAutoDismiss" role="alert" aria-live="polite">
+        <span><%= success %></span>
+        <button type="button" class="flashClose" aria-label="Dismiss alert" onclick="this.closest('.flashMessage').remove()">&times;</button>
+    </div>
+    </div>
+<% } %>
+
+<% if(update && update.length){ %>
+    <div class="flashMessages">
+    <div class="flashMessage flashMessage--update flashAutoDismiss" role="alert" aria-live="polite">
+        <span><%= update %></span>
+        <button type="button" class="flashClose" aria-label="Dismiss alert" onclick="this.closest('.flashMessage').remove()">&times;</button>
+    </div>
+    </div>
+<% } %>
+
+<% if(deleteMsg && deleteMsg.length){ %>
+    <div class="flashMessages">
+    <div class="flashMessage flashMessage--delete flashAutoDismiss" role="alert" aria-live="polite">
+        <span><%= deleteMsg %></span>
+        <button type="button" class="flashClose" aria-label="Dismiss alert" onclick="this.closest('.flashMessage').remove()">&times;</button>
+    </div>
+    </div>
+<% } %>

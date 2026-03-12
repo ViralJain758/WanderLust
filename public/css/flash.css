@@ -1,0 +1,54 @@
+.flashMessages {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-inline: auto;
+  margin-top: 10px;
+}
+
+.flashMessage {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 90%;
+  font-weight: 400;
+  border-radius: 5px;
+  font-size: 18px;
+  padding: 8px 12px;
+  opacity: 1;
+  transition:
+    opacity 0.4s ease,
+    transform 0.4s ease;
+}
+
+.flashMessage--success {
+  background: rgb(168, 218, 161);
+  border: 2px solid rgb(139, 220, 129);
+}
+
+.flashMessage--update {
+  background: rgb(173, 216, 230);
+  border: 2px solid rgb(100, 181, 246);
+}
+
+.flashMessage--delete {
+  background: rgb(255, 179, 179);
+  border: 2px solid rgb(239, 105, 105);
+}
+
+.flashMessage.fadeOut {
+  opacity: 0;
+  transform: translateY(-6px);
+}
+
+.flashClose {
+  border: none;
+  background: transparent;
+  color: inherit;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+}

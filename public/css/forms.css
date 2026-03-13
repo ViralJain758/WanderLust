@@ -74,3 +74,16 @@ textarea.form-control {
 .form-btn:active {
   transform: scale(0.98);
 }
+
+.form-switch-text {
+  margin-top: 14px;
+  margin-bottom: 0;
+  text-align: center;
+  color: #555;
+}
+
+.form-switch-link {
+  color: #fe424d;
+  text-decoration: none;
+  font-weight: 600;
+}

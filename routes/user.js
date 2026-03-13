@@ -3,9 +3,10 @@ const router = express.Router();
 const passport = require("passport");
 const User = require("../models/user.js");
 const wrapAsync = require("../utils/wrapAsync.js");
+const { saveRedirectUrl } = require("../utils/middleware.js");
 
 router.get("/signup", (req, res) => {
-  res.render("users/signup.ejs");
+  res.render("users/signup.ejs", { hideNavbar: true });
 });
 
 router.post(
@@ -32,18 +33,19 @@ router.post(
 );
 
 router.get("/signin", (req, res) => {
-  res.render("users/signin.ejs");
+  res.render("users/signin.ejs", { hideNavbar: true });
 });
 
 router.post(
   "/signin",
+  saveRedirectUrl,
   passport.authenticate("local", {
     failureRedirect: "/signin",
     failureFlash: true,
   }),
-  (req, res) => {
+  async (req, res) => {
     req.flash("Success", "Welcome back to WanderLust!");
-    res.redirect("/listings");
+    res.redirect(res.locals.redirectUrl || "/listings");
   },
 );
 

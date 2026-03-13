@@ -7,7 +7,9 @@
     <%- include ("./headlinks.ejs") %>
   </head>
   <body>
-    <%- include ("../includes/navbar.ejs") %>
+    <% if (typeof hideNavbar === "undefined" || !hideNavbar) { %>
+      <%- include ("../includes/navbar.ejs") %>
+    <% } %>
     <div class="container">
       <%- include ("../includes/flash.ejs") %> <%- body %>
     </div>

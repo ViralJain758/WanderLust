@@ -11,6 +11,7 @@ router.get("/signup", (req, res) => {
 
 router.post(
   "/signup",
+  saveRedirectUrl,
   wrapAsync(async (req, res) => {
     try {
       let { username, email, password } = req.body;
@@ -23,7 +24,7 @@ router.post(
           return res.redirect("/signup");
         }
         req.flash("Success", "Welcome to WanderLust!");
-        res.redirect("/listings");
+        res.redirect(res.locals.redirectUrl || "/listings");
       });
     } catch (err) {
       req.flash("error", err.message);
@@ -36,8 +37,25 @@ router.get("/signin", (req, res) => {
   res.render("users/signin.ejs", { hideNavbar: true });
 });
 
+router.get("/login", (req, res) => {
+  res.redirect("/signin");
+});
+
 router.post(
   "/signin",
+  saveRedirectUrl,
+  passport.authenticate("local", {
+    failureRedirect: "/signin",
+    failureFlash: true,
+  }),
+  async (req, res) => {
+    req.flash("Success", "Welcome back to WanderLust!");
+    res.redirect(res.locals.redirectUrl || "/listings");
+  },
+);
+
+router.post(
+  "/login",
   saveRedirectUrl,
   passport.authenticate("local", {
     failureRedirect: "/signin",

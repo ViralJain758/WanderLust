@@ -86,19 +86,24 @@
             <article class="review-card">
               <div class="review-topline">
                 <p class="review-rating">Rating: <strong><%= review.rating %>/5</strong></p>
+                <p class="review-author">
+                  By: <strong><%= review.author?.username || "Anonymous" %></strong>
+                </p>
                 <p class="review-time">
                   <%= new Date(review.created_at).toLocaleString("en-IN", { dateStyle: "medium", timeStyle: "short" }) %>
                 </p>
               </div>
               <p class="review-comment"><%= review.comment %></p>
               <br />
-              <form
-                action="/listings/<%= listing._id %>/review/<%= review._id %>?_method=DELETE"
-                method="POST"
-                class="delete-form"
-              >
-                <button class="btn delete-btn">Delete this Review</button>
-              </form>
+              <% if (currUser && review.author && currUser._id.toString() === review.author._id.toString()) { %>
+                <form
+                  action="/listings/<%= listing._id %>/review/<%= review._id %>?_method=DELETE"
+                  method="POST"
+                  class="delete-form"
+                >
+                  <button class="btn delete-btn">Delete this Review</button>
+                </form>
+              <% } %>
             </article>
           <% } %>
         </section>

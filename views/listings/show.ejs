@@ -120,6 +120,24 @@
             </article>
           <% } %>
         </section>
+        <br><hr><br>
+        <h4>Location Map</h4>
+        <div id="map">
+          <iframe
+            title="Listing Location Map"
+            src="https://maps.google.com/maps?q=<%= mapQuery %>&z=14&output=embed&iwloc=A"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+        <a
+          href="https://www.google.com/maps/search/?api=1&query=<%= mapQuery %>"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="open-maps-btn"
+        >
+          <i class="fa-solid fa-location-dot"></i> Open in Google Maps
+        </a>
       </div>
     </div>
   </div>

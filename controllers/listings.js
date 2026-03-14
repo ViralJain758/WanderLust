@@ -25,7 +25,10 @@ module.exports.showListing = async (req, res) => {
     return res.redirect("/listings");
   }
   const ownerUsername = listing.owner?.username || "Unknown";
-  res.render("listings/show.ejs", { listing, ownerUsername });
+  const mapQuery = encodeURIComponent(
+    `${listing.location}, ${listing.country}`,
+  );
+  res.render("listings/show.ejs", { listing, ownerUsername, mapQuery });
 };
 
 module.exports.createListing = async (req, res, next) => {

@@ -77,6 +77,14 @@ app.get("/", (req, res) => {
   res.render("home.ejs");
 });
 
+app.get("/privacy", (req, res) => {
+  res.render("privacy.ejs");
+});
+
+app.get("/terms", (req, res) => {
+  res.render("terms.ejs");
+});
+
 app.use("/listings", listingRouter);
 app.use("/listings/:id/review", reviewRouter);
 app.use("/", userRouter);

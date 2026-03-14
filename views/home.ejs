@@ -1,41 +1,150 @@
 <% layout("/layouts/boilerplate.ejs") %>
 
+<!-- ── HERO ─────────────────────────────────────── -->
 <section class="landing-hero">
-  <div class="landing-content">
-    <p class="landing-kicker">Welcome to WanderLust</p>
-    <h1 class="landing-title">Find stays that feel like home, anywhere.</h1>
-    <p class="landing-text">
-      Discover unique places, explore beautiful destinations, and share your
-      own listings with travelers around the world.
-    </p>
-
-    <div class="landing-actions">
-      <a href="/listings" class="landing-btn landing-btn-primary">Explore Listings</a>
-      <% if (!currUser) { %>
-        <a href="/signup" class="landing-btn landing-btn-secondary">Create Account</a>
-      <% } else { %>
-        <a href="/listings/new" class="landing-btn landing-btn-secondary">Add Listing</a>
-      <% } %>
+  <div class="landing-hero-inner">
+    <div class="landing-content">
+      <p class="landing-kicker"><i class="fa-solid fa-compass"></i> Welcome to WanderLust</p>
+      <h1 class="landing-title">Find stays that feel like <span class="landing-title-accent">home</span>, anywhere.</h1>
+      <p class="landing-text">
+        Discover unique places, explore beautiful destinations, and share your
+        own listings with travellers around the world.
+      </p>
+      <div class="landing-actions">
+        <a href="/listings" class="landing-btn landing-btn-primary">
+          <i class="fa-solid fa-magnifying-glass"></i> Explore Locations
+        </a>
+        <% if (!currUser) { %>
+          <a href="/signup" class="landing-btn landing-btn-secondary">
+            <i class="fa-solid fa-user-plus"></i> Create Account
+          </a>
+        <% } else { %>
+          <a href="/listings/new" class="landing-btn landing-btn-secondary">
+            <i class="fa-solid fa-plus"></i> Add A Location
+          </a>
+        <% } %>
+      </div>
+    </div>
+    <div class="landing-hero-visual" aria-hidden="true">
+      <div class="hero-card hero-card--1">
+        <i class="fa-solid fa-umbrella-beach"></i>
+        <span>Beach Villa, Goa</span>
+        <strong>₹4,200 / night</strong>
+      </div>
+      <div class="hero-card hero-card--2">
+        <i class="fa-solid fa-mountain-sun"></i>
+        <span>Mountain Cabin, Manali</span>
+        <strong>₹2,800 / night</strong>
+      </div>
+      <div class="hero-card hero-card--3">
+        <i class="fa-solid fa-city"></i>
+        <span>City Loft, Mumbai</span>
+        <strong>₹3,500 / night</strong>
+      </div>
     </div>
   </div>
 </section>
 
+<!-- ── STATS STRIP ───────────────────────────────── -->
+<div class="landing-stats">
+  <div class="stat-item">
+    <strong>500+</strong>
+    <span>Unique Listings</span>
+  </div>
+  <div class="stat-divider"></div>
+  <div class="stat-item">
+    <strong>80+</strong>
+    <span>Destinations</span>
+  </div>
+  <div class="stat-divider"></div>
+  <div class="stat-item">
+    <strong>10k+</strong>
+    <span>Happy Travellers</span>
+  </div>
+  <div class="stat-divider"></div>
+  <div class="stat-item">
+    <strong>4.8 <i class="fa-solid fa-star"></i></strong>
+    <span>Average Rating</span>
+  </div>
+</div>
+
+<!-- ── FEATURES ──────────────────────────────────── -->
 <section class="landing-features">
-  <article class="feature-card">
-    <i class="fa-solid fa-map-location-dot"></i>
-    <h3>Explore Anywhere</h3>
-    <p>Browse handpicked stays across cities, beaches, mountains, and beyond.</p>
-  </article>
+  <div class="section-header">
+    <p class="section-kicker">Why WanderLust</p>
+    <h2 class="section-title">Everything you need for the perfect stay</h2>
+  </div>
+  <div class="feature-grid">
+    <article class="feature-card">
+      <div class="feature-icon-wrap">
+        <i class="fa-solid fa-map-location-dot"></i>
+      </div>
+      <h3>Explore Anywhere</h3>
+      <p>Browse handpicked stays across cities, beaches, mountains, and beyond.</p>
+    </article>
+    <article class="feature-card">
+      <div class="feature-icon-wrap">
+        <i class="fa-solid fa-house"></i>
+      </div>
+      <h3>Stay Unique</h3>
+      <p>Find memorable homes and experiences for every kind of traveller.</p>
+    </article>
+    <article class="feature-card">
+      <div class="feature-icon-wrap">
+        <i class="fa-solid fa-star"></i>
+      </div>
+      <h3>Trusted Reviews</h3>
+      <p>Read honest feedback and help others by reviewing your stays.</p>
+    </article>
+    <article class="feature-card">
+      <div class="feature-icon-wrap">
+        <i class="fa-solid fa-shield-halved"></i>
+      </div>
+      <h3>Safe &amp; Secure</h3>
+      <p>Every listing is verified and your stay is backed by our community standards.</p>
+    </article>
+  </div>
+</section>
 
-  <article class="feature-card">
-    <i class="fa-solid fa-house"></i>
-    <h3>Stay Unique</h3>
-    <p>Find memorable homes and experiences for every kind of traveler.</p>
-  </article>
+<!-- ── HOW IT WORKS ──────────────────────────────── -->
+<section class="how-it-works">
+  <div class="section-header">
+    <p class="section-kicker">Simple Steps</p>
+    <h2 class="section-title">How it works</h2>
+  </div>
+  <div class="steps">
+    <div class="step">
+      <div class="step-number">1</div>
+      <h4>Search a destination</h4>
+      <p>Tell us where you want to go and when you're travelling.</p>
+    </div>
+    <div class="step-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+    <div class="step">
+      <div class="step-number">2</div>
+      <h4>Pick your perfect stay</h4>
+      <p>Browse listings, read reviews, and compare prices instantly.</p>
+    </div>
+    <div class="step-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+    <div class="step">
+      <div class="step-number">3</div>
+      <h4>Book &amp; Enjoy</h4>
+      <p>Secure your spot and enjoy a handpicked home away from home.</p>
+    </div>
+  </div>
+</section>
 
-  <article class="feature-card">
-    <i class="fa-solid fa-star"></i>
-    <h3>Share Reviews</h3>
-    <p>Read honest feedback and help others by reviewing your stays.</p>
-  </article>
+<!-- ── BOTTOM CTA ─────────────────────────────────── -->
+<section class="landing-cta">
+  <h2>Ready to start your journey?</h2>
+  <p>Join thousands of travellers discovering unique stays every day.</p>
+  <div class="landing-actions">
+    <a href="/listings" class="landing-btn landing-btn-primary">
+      <i class="fa-solid fa-magnifying-glass"></i> Browse All Listings
+    </a>
+    <% if (!currUser) { %>
+      <a href="/signup" class="landing-btn landing-btn-light">
+        <i class="fa-solid fa-user-plus"></i> Sign Up Free
+      </a>
+    <% } %>
+  </div>
 </section>

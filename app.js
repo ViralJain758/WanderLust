@@ -60,10 +60,6 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-app.get("/", (req, res) => {
-  res.send("Hello World");
-});
-
 app.use((req, res, next) => {
   res.locals.currUser = req.user;
   res.locals.success = req.flash("Success");
@@ -72,6 +68,10 @@ app.use((req, res, next) => {
   res.locals.review = req.flash("Review");
   res.locals.error = req.flash("error");
   next();
+});
+
+app.get("/", (req, res) => {
+  res.render("home.ejs");
 });
 
 app.use("/listings", listingRouter);

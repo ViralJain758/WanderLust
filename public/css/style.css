@@ -22,3 +22,99 @@ h3 {
   font-size: 2rem;
   margin-left: 1rem;
 }
+
+.landing-hero {
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 1.5rem;
+  background: linear-gradient(135deg, #fff3f3, #f8f9ff);
+}
+
+.landing-content {
+  width: 100%;
+  max-width: 900px;
+  text-align: center;
+}
+
+.landing-kicker {
+  color: #fe424d;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 1rem;
+}
+
+.landing-title {
+  font-size: 3.2rem;
+  color: #222;
+  margin-bottom: 1rem;
+}
+
+.landing-text {
+  max-width: 700px;
+  margin: 0 auto 2rem;
+  color: #555;
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
+
+.landing-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.landing-btn {
+  display: inline-block;
+  padding: 0.9rem 1.4rem;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.landing-btn-primary {
+  background: #fe424d;
+  color: #fff;
+}
+
+.landing-btn-secondary {
+  background: #fff;
+  color: #333;
+  border: 1px solid #ddd;
+}
+
+.landing-features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  padding: 2rem 1.5rem 4rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.feature-card {
+  background: #fff;
+  border-radius: 14px;
+  padding: 1.5rem;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.06);
+  text-align: center;
+}
+
+.feature-card i {
+  font-size: 1.8rem;
+  color: #fe424d;
+  margin-bottom: 1rem;
+}
+
+.feature-card h3 {
+  margin: 0 0 0.75rem;
+  font-size: 1.3rem;
+}
+
+.feature-card p {
+  color: #666;
+  line-height: 1.6;
+}

@@ -1,0 +1,41 @@
+<% layout("/layouts/boilerplate.ejs") %>
+
+<section class="landing-hero">
+  <div class="landing-content">
+    <p class="landing-kicker">Welcome to WanderLust</p>
+    <h1 class="landing-title">Find stays that feel like home, anywhere.</h1>
+    <p class="landing-text">
+      Discover unique places, explore beautiful destinations, and share your
+      own listings with travelers around the world.
+    </p>
+
+    <div class="landing-actions">
+      <a href="/listings" class="landing-btn landing-btn-primary">Explore Listings</a>
+      <% if (!currUser) { %>
+        <a href="/signup" class="landing-btn landing-btn-secondary">Create Account</a>
+      <% } else { %>
+        <a href="/listings/new" class="landing-btn landing-btn-secondary">Add Listing</a>
+      <% } %>
+    </div>
+  </div>
+</section>
+
+<section class="landing-features">
+  <article class="feature-card">
+    <i class="fa-solid fa-map-location-dot"></i>
+    <h3>Explore Anywhere</h3>
+    <p>Browse handpicked stays across cities, beaches, mountains, and beyond.</p>
+  </article>
+
+  <article class="feature-card">
+    <i class="fa-solid fa-house"></i>
+    <h3>Stay Unique</h3>
+    <p>Find memorable homes and experiences for every kind of traveler.</p>
+  </article>
+
+  <article class="feature-card">
+    <i class="fa-solid fa-star"></i>
+    <h3>Share Reviews</h3>
+    <p>Read honest feedback and help others by reviewing your stays.</p>
+  </article>
+</section>

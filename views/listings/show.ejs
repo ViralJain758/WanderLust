@@ -23,19 +23,21 @@
         <li class="listing-owner">Hosted by: <%= ownerUsername %></li>
       </ul>
 
-      <div class="listing-actions">
-        <a href="/listings/<%= listing._id %>/edit" class="btn btn-edit"
-          >Edit this Listing
-        </a>
+      <% if (currUser && listing.owner && currUser._id.toString() === listing.owner._id.toString()) { %>
+        <div class="listing-actions">
+          <a href="/listings/<%= listing._id %>/edit" class="btn btn-edit"
+            >Edit this Listing
+          </a>
 
-        <form
-          action="/listings/<%= listing._id %>?_method=DELETE"
-          method="POST"
-          class="delete-form"
-        >
-          <button class="btn delete-btn">Delete this Listing</button>
-        </form>
-      </div>
+          <form
+            action="/listings/<%= listing._id %>?_method=DELETE"
+            method="POST"
+            class="delete-form"
+          >
+            <button class="btn delete-btn">Delete this Listing</button>
+          </form>
+        </div>
+      <% } %>
       <br />
       <hr />
       <br />

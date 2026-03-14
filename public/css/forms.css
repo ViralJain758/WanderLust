@@ -1,7 +1,7 @@
 form {
   background: #ffffff;
   width: 100%;
-  max-width: 550px;
+  max-width: 600px;
   padding: 30px;
   border-radius: 10px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
@@ -86,4 +86,12 @@ textarea.form-control {
   color: #fe424d;
   text-decoration: none;
   font-weight: 600;
+}
+
+.edit-image-preview {
+  width: 100%;
+  max-height: 260px;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 1px solid #ddd;
 }

@@ -1,3 +1,7 @@
+if (process.env.NODE_ENV !== "production") {
+  require("dotenv").config();
+}
+
 const path = require("path");
 const express = require("express");
 const ejsMate = require("ejs-mate");
@@ -13,7 +17,6 @@ const User = require("./models/user.js");
 const listingRouter = require("./routes/listing.js");
 const reviewRouter = require("./routes/reviews.js");
 const userRouter = require("./routes/user.js");
-const user = require("./models/user.js");
 
 const app = express();
 const MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust";
@@ -83,6 +86,7 @@ app.use((req, res, next) => {
 });
 
 app.use((err, req, res, next) => {
+  console.error(err);
   let { statusCode = 500, message = "Something went Wrong" } = err;
   res.status(statusCode).send(message);
 });

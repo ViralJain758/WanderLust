@@ -1,7 +1,11 @@
 <% layout("/layouts/boilerplate.ejs") %>
 <body>
   <br /><br />
-  <form method="POST" action="/listings/<%= listing._id %>?_method=PUT">
+  <form
+    method="POST"
+    action="/listings/<%= listing._id %>?_method=PUT"
+    enctype="multipart/form-data"
+  >
     <h3 class="form-head">Edit Listing</h3>
     <div class="form-field">
       <label for="title" class="form-label">Title</label>
@@ -21,12 +25,17 @@
     </div>
     <br />
     <div class="form-field">
-      <label for="image" class="form-label">Image URL</label>
-      <input
-        name="listing[image][url]"
-        value="<%= listing.image && listing.image.url ? listing.image.url : '' %>"
-        class="form-control"
+      <label class="form-label">Current Image</label>
+      <img
+        src="<%= listing.image && listing.image.url ? listing.image.url : '' %>"
+        alt="Current Listing Image"
+        class="edit-image-preview"
       />
+    </div>
+    <br />
+    <div class="form-field">
+      <label for="image" class="form-label">Change Image</label>
+      <input name="image" class="form-control" type="file" accept="image/*" />
     </div>
     <br />
     <div class="form-field">

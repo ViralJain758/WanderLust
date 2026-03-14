@@ -20,7 +20,7 @@ const validateListing = (req, res, next) => {
 
 const validateObjectId = (req, res, next) => {
   if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
-    req.flash("error", "Invalid listing ID!");
+    req.flash("error", "Listing does not exist!");
     return res.redirect("/listings");
   }
   next();
@@ -46,8 +46,15 @@ router.get(
   validateObjectId,
   wrapAsync(async (req, res) => {
     let { id } = req.params;
-    const listing = await Listing.findById(id).populate("reviews");
-    res.render("listings/show.ejs", { listing });
+    const listing = await Listing.findById(id)
+      .populate("reviews")
+      .populate("owner");
+    if (!listing) {
+      req.flash("error", "Listing does not exist!");
+      return res.redirect("/listings");
+    }
+    const ownerUsername = listing.owner?.username || "Unknown";
+    res.render("listings/show.ejs", { listing, ownerUsername });
   }),
 );
 
@@ -58,6 +65,7 @@ router.post(
   validateListing,
   wrapAsync(async (req, res, next) => {
     const newListing = new Listing(req.body.listing);
+    newListing.owner = req.user._id;
     await newListing.save();
     req.flash("Success", "New Listing Created!");
     res.redirect("/listings");

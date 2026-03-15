@@ -1,101 +1,204 @@
 # WanderLust
 
-WanderLust is a full-stack Airbnb-style travel listing app built with Node.js, Express, MongoDB, and EJS.
+WanderLust is a full-stack travel listing platform where users can explore destinations, create listings, upload images, and share reviews.  
+The application implements authentication, authorization, cloud image storage, and interactive maps to simulate a real-world property listing system similar to accommodation marketplaces.
 
-Users can browse listings, sign up/sign in, create and manage their own listings, upload images to Cloudinary, post reviews with star ratings, and view listing locations on map embeds.
+---
+
+## Live Demo
+
+https://wanderlust-js8e.onrender.com
+
+---
+
+## Overview
+
+The goal of this project was to build a complete full-stack application while learning backend architecture and modern web development practices.
+
+The platform allows users to:
+
+- Browse travel listings
+- View detailed property pages
+- Upload images for listings
+- Add and manage reviews
+- Interact with location maps
+- Manage listings they created
+
+The application follows the **MVC architecture** and integrates several external services for cloud storage and mapping.
+
+---
 
 ## Features
 
-- Authentication with Passport (`signup`, `signin`, `logout`)
-- Authorization guards:
-  - Only listing owners can edit/update/delete listings
-  - Only review authors can delete their reviews
-- Listings CRUD with Joi validation
-- Reviews create/delete with star ratings
-- Cloudinary image upload for create and edit listing flows
-- Responsive navbar with mobile hamburger menu
-- Landing page (`/`) with custom sections and CTA
-- Static legal pages:
-  - Privacy Policy (`/privacy`)
-  - Terms of Service (`/terms`)
-- Flash messages and session persistence with MongoDB store (`connect-mongo`)
+### User Authentication
+- Secure user registration and login
+- Session-based authentication
+- Protected routes for authenticated users
+
+### Authorization
+- Only listing authors can edit or delete their listings
+- Only review authors can modify or delete their reviews
+
+### Listing Management
+- Create, edit, and delete property listings
+- Upload images for listings
+- Display listing details including location and reviews
+
+### Reviews System
+- Users can add reviews to listings
+- Review authorship is tracked
+- Users can edit or delete their own reviews
+
+### Interactive Maps
+- Listings display their location using an interactive map
+- Helps users visually understand property location
+
+### Cloud Image Storage
+- Images uploaded for listings are stored using cloud storage
+- Enables scalable image handling
+
+### Data Validation
+- Server-side validation ensures only valid data is stored
+- Prevents invalid or malicious input
+
+### Performance Optimization
+- Lazy loading used for better image loading performance
+- Caching used to improve response times
+
+---
 
 ## Tech Stack
 
+### Frontend
+- EJS (Embedded JavaScript Templates)
+- HTML5
+- CSS3
+- JavaScript
+
+### Backend
 - Node.js
-- Express 5
-- MongoDB + Mongoose
-- EJS + ejs-mate
-- Passport + passport-local + passport-local-mongoose
-- Joi
-- Multer + Cloudinary + multer-storage-cloudinary
-- express-session + connect-mongo + connect-flash
-- method-override
+- Express.js
 
-## Environment Variables
+### Database
+- MongoDB
+- Mongoose
 
-Create a `.env` file in project root using `.env.example`:
+### External Services
+- Cloudinary (Image Storage)
+- Google Maps (Map Integration)
 
-```env
-NODE_ENV=development
-PORT=8080
-ATLASDB_URI=mongodb+srv://username:password@cluster.mongodb.net/wanderlust?retryWrites=true&w=majority
-SESSION_SECRET=replace_with_a_long_random_secret
+### Other Tools
+- Session management
+- Server-side validation
+- MVC project structure
 
-CLOUD_NAME=your_cloud_name
-CLOUDINARY_KEY=your_cloudinary_api_key
-CLOUDINARY_SECRET=your_cloudinary_api_secret
+---
+
+## Architecture
+
+The project follows **MVC (Model-View-Controller) architecture** to maintain separation of concerns.
+
+```
+Client (Browser)
+       │
+       ▼
+Express Routes
+       │
+       ▼
+Controllers
+       │
+       ▼
+Models (MongoDB / Mongoose)
+       │
+       ▼
+External Services
+   • Cloudinary
+   • Google Maps
 ```
 
-## Getting Started
+This structure improves code maintainability and scalability.
 
-1. Install dependencies
+---
 
-```bash
+## Installation
+
+Clone the repository:
+
+```
+git clone https://github.com/ViralJain758/WanderLust.git
+```
+
+Navigate into the project directory:
+
+```
+cd WanderLust
+```
+
+Install dependencies:
+
+```
 npm install
 ```
 
-2. (Optional) Seed sample listings
+Start the application:
 
-```bash
-node init/index.js
+```
+node app.js
 ```
 
-3. Run in development
+The server will run locally on:
 
-```bash
-npm run dev
+```
+http://localhost:8080
 ```
 
-App URL: `http://localhost:8080`
+---
 
-## Scripts
+## Environment Variables
 
-- `npm run dev` — Run with nodemon
-- `npm start` — Run with Node
-- `node init/index.js` — Seed database
+Create a `.env` file in the root directory and add the following variables:
 
-## Key Routes
+```
+DB_URL=
+CLOUDINARY_CLOUD_NAME=
+CLOUDINARY_KEY=
+CLOUDINARY_SECRET=
+MAP_API_KEY=
+SESSION_SECRET=
+```
 
-- `GET /` — Landing page
-- `GET /listings` — All listings
-- `GET /listings/:id` — Listing details + reviews + map
-- `POST /listings` — Create listing (auth required)
-- `PUT /listings/:id` — Update listing (owner only)
-- `DELETE /listings/:id` — Delete listing (owner only)
-- `POST /listings/:id/review` — Add review (auth required)
-- `DELETE /listings/:id/review/:reviewId` — Delete review (review author only)
-- `GET /signup`, `GET /signin`, `GET /logout`
-- `GET /privacy`, `GET /terms`
+These variables are required for database connection, cloud storage, map integration, and session security.
 
-## Deployment Notes
+---
 
-- Set `NODE_ENV=production`
-- Set strong `SESSION_SECRET`
-- Add Atlas IP allowlist / proper network access
-- Ensure all Cloudinary env vars are present
-- In production, secure cookies are enabled automatically
+## Project Structure
 
-## License
+```
+controllers/
+models/
+routes/
+views/
+public/
+utils/
 
-ISC
+middleware.js
+schema.js
+cloudConfig.js
+app.js
+```
+
+- **controllers** → application logic  
+- **models** → database schemas  
+- **routes** → API routes  
+- **views** → EJS templates  
+- **public** → static assets (CSS, JS, images)  
+- **utils** → helper utilities  
+
+---
+
+## Author
+
+Viral Jain
+
+GitHub:  
+https://github.com/ViralJain758
